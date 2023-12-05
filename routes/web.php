@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApprenantController;
+use App\Http\Controllers\MatiereController;
+use App\Models\Matiere;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,9 @@ Route::get('/',function(){
     return view('welcome');
 });
 
-Route::get('apprenant',[ApprenantController::class,"index"], function () {
+Route::get('/apprenants',[ApprenantController::class,"index"], function () {
+    
+});
+Route::get('/matieres',[MatiereController::class,"index"], function () {
     
 });
