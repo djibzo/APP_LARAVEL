@@ -8,6 +8,7 @@
     <title>Apprenants</title>
 </head>
 <body>
+
     <h1><center>Liste des apprenants</center></h1>
     <table class="table table-dark table-sm">
         <thead>
@@ -16,6 +17,7 @@
             <th scope="col">Nom</th>
             <th scope="col">Prenom</th>
             <th scope="col">Telephone</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -25,12 +27,18 @@
                 <td>{{$item->nom}}</td>
                 <td>{{$item->prenom}}</td>
                 <td>{{$item->telephone}}</td>
+                <td>
+                  <a  href="" class="btn btn-success ">Modifier</a>
+                  <a  href="" class="btn btn-danger ">Supprimer</a>
+                </td>
               </tr>
             @empty
                 
             @endforelse
         </tbody>
+      
       </table>
+      <a href="{{route('add_new_apprenant')}}" type="button" class="btn btn-primary ">Ajouter un apprenant</a>
 </body>
 </html>
 

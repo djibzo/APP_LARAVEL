@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',function(){
     return view('welcome');
 });
+//Route pour matieres
+Route::get('/matieres',[MatiereController::class,"index"]);
 
-Route::get('/apprenants',[ApprenantController::class,"index"], function () {
-    
-});
-Route::get('/matieres',[MatiereController::class,"index"], function () {
-    
-});
+//Route pour apprenant
+Route::get('/apprenants',[ApprenantController::class,"index"])->name('route_apprenants');
+Route::get('/apprenants/new',[ApprenantController::class,"create"])->name('add_new_apprenant');
+
+Route::post('/apprenants/store',[ApprenantController::class,'store'])->name('store_apprenant');
+
