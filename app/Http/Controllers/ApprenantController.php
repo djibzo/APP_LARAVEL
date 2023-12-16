@@ -20,8 +20,42 @@ class ApprenantController extends Controller
             "nom"=>"required",
             "matricule"=>"required",
             "telephone"=>"required"
+        ],
+    [
+        'nom.required'=>'Le champ nom est obligatoire',
+        'prenom.required'=>'Le champ prenom est obligatoire',
+        'matricule.required'=>'Le champ matricule est obligatoire',
+        'telephone.required'=>'Le champ telephone est obligatoire',
+    ]);
+    Apprenant::create($request->all());
+}
+    public function delete($id){
+        $apprenant=Apprenant::find($id);
+        $apprenant->delete();
+        return redirect('/apprenants')->with('status','Apprenant supprimé avec success');
+    }
+    public function update($id)
+    {
+        $apprenant=Apprenant::find($id);
+        return view('apprenants.update',compact('apprenant'));
+    }
+    public function update_traitement(Request $request){
+        $request->validate([
+            "prenom"=>"required",
+            "nom"=>"required",
+            "matricule"=>"required",
+            "telephone"=>"required"
         ]);
-        Apprenant::create($request->all());//Request all va nous donner le tableau avec les donnees
+        $apprenant=Apprenant::find($request->id);
+        $apprenant->nom=$request->nom;
+        $apprenant->prenom=$request->prenom;
+        $apprenant->matricule=$request->matricule;
+        $apprenant->telephone=$request->telephone;
+        $apprenant->update();
+        return redirect('/apprenants')->with('status','Apprenant modifié avec success');
+    }
+    ///NOTES////////////
+        //Apprenant::create($request->all());//Request all va nous donner le tableau avec les donnees
         // Apprenant::create([
         //     "nom"=>$request->input('nom'),
         //     "prenom"=>$request->input('prenom'),
@@ -31,5 +65,4 @@ class ApprenantController extends Controller
         // $apprenant =new Apprenant();
         // $apprenant->nom=$request->input('nom');
         //ainsi de suite
-    }
 }

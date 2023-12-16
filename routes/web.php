@@ -24,6 +24,7 @@ Route::get('/matieres',[MatiereController::class,"index"]);
 //Route pour apprenant
 Route::get('/apprenants',[ApprenantController::class,"index"])->name('route_apprenants');
 Route::get('/apprenants/new',[ApprenantController::class,"create"])->name('add_new_apprenant');
-
 Route::post('/apprenants/store',[ApprenantController::class,'store'])->name('store_apprenant');
-
+Route::post('/update/traitement',[ApprenantController::class,'update_traitement'])->name('update_traitement');
+Route::get('/update/{id}',[ApprenantController::class,'update'])->name('update_apprenant');
+Route::get('/delete/{id}',[ApprenantController::class,'delete']);
