@@ -28,3 +28,5 @@ Route::post('/apprenants/store',[ApprenantController::class,'store'])->name('sto
 Route::post('/update/traitement',[ApprenantController::class,'update_traitement'])->name('update_traitement');
 Route::get('/update/{id}',[ApprenantController::class,'update'])->name('update_apprenant');
 Route::get('/delete/{id}',[ApprenantController::class,'delete']);
+//Route::resource();
+//php artisan make:controller UNCONTROLLER -r

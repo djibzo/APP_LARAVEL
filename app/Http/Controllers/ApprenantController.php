@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Apprenant;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
 class ApprenantController extends Controller
 {
@@ -19,15 +20,11 @@ class ApprenantController extends Controller
             "prenom"=>"required",
             "nom"=>"required",
             "matricule"=>"required",
-            "telephone"=>"required"
-        ],
-    [
-        'nom.required'=>'Le champ nom est obligatoire',
-        'prenom.required'=>'Le champ prenom est obligatoire',
-        'matricule.required'=>'Le champ matricule est obligatoire',
-        'telephone.required'=>'Le champ telephone est obligatoire',
-    ]);
+            "telephone"=>"required|max:9"
+        ]);
     Apprenant::create($request->all());
+    $apprenants=Apprenant::all();
+    return view('apprenants.listeApprenants',compact("apprenants")); 
 }
     public function delete($id){
         $apprenant=Apprenant::find($id);

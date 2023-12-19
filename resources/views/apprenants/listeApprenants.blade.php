@@ -19,7 +19,7 @@
                 @if (session('status'))
                     <div class="alert alert-success">{{ session('status') }}</div>
                 @endif
-                <table class="table table-dark table-sm">
+                <table class="table table-dark table-sm table-striped-columns table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
